@@ -6,6 +6,9 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { FaHome } from 'react-icons/fa'
 
+axios.defaults.withCredentials = true;
+
+
 const EmailVertify = () => {
   axios.defaults.withCredentials = true
   const { backendUrl, setIsloggedin, getUserData, userData } = useContext(AppContent)

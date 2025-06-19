@@ -6,6 +6,8 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 import { FaHome } from 'react-icons/fa'
 
+axios.defaults.withCredentials = true;
+
 const Login = () => {
   const [state, setState] = useState('Sign up')
   const [name, setName] = useState('')

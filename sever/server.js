@@ -10,20 +10,19 @@ const app = express();
 const port = process.env.PORT || 4000;
 connectDB();
 
-const allowedOrigins =['http://localhost:5174']//add all the frontend url we will use
+const allowedOrigins =['http://localhost:5174', 'https://complete-mern-authentication-system-1.onrender.com']//add all the frontend url we will use
 
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    // origin: function (origin, callback) {
-    //     if (!origin || allowedOrigins.includes(origin)) {
-    //         callback(null, true);
-    //     } else {
-    //         callback(new Error('Not allowed by CORS'));
-    //     }
-    // },
-    origin:true,
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
 }));
 //so that we can send the cookies in the response from the express app
